@@ -20,6 +20,7 @@ public class FinancialTransferMapper {
         dto.setBeneficiaryAccount(transfer.getBeneficiary().getAccountNumber());
         dto.setAmount(transfer.getAmount());
         dto.setTax(transfer.getTax());
+        dto.setTotalAmount(transfer.getTotalAmount());
         dto.setType(transfer.getType());
         dto.setTransferDate(transfer.getTransferDate());
         dto.setScheduleDate(transfer.getScheduleDate());
