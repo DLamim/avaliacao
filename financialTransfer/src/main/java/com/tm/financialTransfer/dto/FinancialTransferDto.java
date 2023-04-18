@@ -10,6 +10,7 @@ public class FinancialTransferDto {
     private String beneficiaryAccount;
     private BigDecimal amount;
     private BigDecimal tax;
+    private String type;
     private Date transferDate;
     private Date scheduleDate;
 
@@ -51,6 +52,14 @@ public class FinancialTransferDto {
 
     public void setTax(BigDecimal tax) {
         this.tax = tax;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getTransferDate() {

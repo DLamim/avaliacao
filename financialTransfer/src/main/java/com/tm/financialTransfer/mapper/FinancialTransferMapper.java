@@ -20,6 +20,7 @@ public class FinancialTransferMapper {
         dto.setBeneficiaryAccount(transfer.getBeneficiary().getAccountNumber());
         dto.setAmount(transfer.getAmount());
         dto.setTax(transfer.getTax());
+        dto.setType(transfer.getType());
         dto.setTransferDate(transfer.getTransferDate());
         dto.setScheduleDate(transfer.getScheduleDate());
         return dto;
@@ -32,6 +33,7 @@ public class FinancialTransferMapper {
         transfer.setBeneficiary(beneficiaryAccount);
         transfer.setAmount(dto.getAmount());
         transfer.setTax(dto.getTax());
+        transfer.setType(dto.getType());
         transfer.setTransferDate(dto.getTransferDate());
         transfer.setScheduleDate(dto.getScheduleDate());
         return transfer;
@@ -40,7 +42,7 @@ public class FinancialTransferMapper {
     public List<FinancialTransferDto> listToDto(List<FinancialTransfer> financialTransferList) {
         List<FinancialTransferDto> dtoList = new ArrayList<>();
 
-        financialTransferList.stream().forEach(o -> dtoList.add(toDto(o)));
+        financialTransferList.forEach(o -> dtoList.add(toDto(o)));
 
         return dtoList;
     }

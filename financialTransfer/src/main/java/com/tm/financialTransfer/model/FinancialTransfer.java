@@ -27,6 +27,12 @@ public class FinancialTransfer {
     @Column(name = "tax", nullable = false)
     private BigDecimal tax;
 
+    @Column(name = "total_amount", nullable = false)
+    private BigDecimal totalAmount;
+
+    @Column(name = "transfer_type", nullable = false)
+    private String type;
+
     @Column(name = "transfer_date", nullable = false)
     private Date transferDate;
 
@@ -73,6 +79,14 @@ public class FinancialTransfer {
         this.tax = tax;
     }
 
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
     public Date getTransferDate() {
         return transferDate;
     }
@@ -87,5 +101,13 @@ public class FinancialTransfer {
 
     public void setScheduleDate(Date scheduleDate) {
         this.scheduleDate = scheduleDate;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
