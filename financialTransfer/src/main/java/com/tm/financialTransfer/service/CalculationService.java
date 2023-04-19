@@ -46,7 +46,7 @@ public class CalculationService {
         //Accepted interval of 1 to 10
         calculateDaysDifference(transfer, 1, 10);
 
-        return BigDecimal.valueOf(12);
+        return BigDecimal.valueOf(12).setScale(2, RoundingMode.HALF_UP);
     }
 
     private BigDecimal calculateTaxTypeC(FinancialTransfer transfer) {
@@ -90,7 +90,7 @@ public class CalculationService {
     }
 
     private long calculateDaysDifference(FinancialTransfer financialTransfer, long minimumInterval, long maximumInterval) throws InvalidTransferDateIntervalException {
-        long daysDiff = ChronoUnit.DAYS.between(financialTransfer.getTransferDate().toInstant(), financialTransfer.getScheduleDate().toInstant());
+        long daysDiff = ChronoUnit.DAYS.between(financialTransfer.getTransferDate().toLocalDate(), financialTransfer.getScheduleDate().toLocalDate());
 
         if (financialTransfer.getType().equals("D")) {
             return daysDiff;

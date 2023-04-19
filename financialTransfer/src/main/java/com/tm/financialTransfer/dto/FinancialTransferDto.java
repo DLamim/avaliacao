@@ -1,6 +1,7 @@
 package com.tm.financialTransfer.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class FinancialTransferDto {
@@ -12,8 +13,8 @@ public class FinancialTransferDto {
     private BigDecimal tax;
     private BigDecimal totalAmount;
     private String type;
-    private Date transferDate;
-    private Date scheduleDate;
+    private LocalDateTime transferDate;
+    private LocalDateTime scheduleDate;
 
     public Long getId() {
         return id;
@@ -71,19 +72,19 @@ public class FinancialTransferDto {
         this.type = type;
     }
 
-    public Date getTransferDate() {
+    public LocalDateTime getTransferDate() {
         return transferDate;
     }
 
-    public void setTransferDate(Date transferDate) {
+    public void setTransferDate(LocalDateTime transferDate) {
         this.transferDate = transferDate;
     }
 
-    public Date getScheduleDate() {
+    public LocalDateTime getScheduleDate() {
         return scheduleDate;
     }
 
-    public void setScheduleDate(Date scheduleDate) {
+    public void setScheduleDate(LocalDateTime scheduleDate) {
         this.scheduleDate = scheduleDate;
     }
 }

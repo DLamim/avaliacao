@@ -3,6 +3,7 @@ package com.tm.financialTransfer.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -34,10 +35,10 @@ public class FinancialTransfer {
     private String type;
 
     @Column(name = "transfer_date", nullable = false)
-    private Date transferDate;
+    private LocalDateTime transferDate;
 
     @Column(name = "schedule_date", nullable = false)
-    private Date scheduleDate;
+    private LocalDateTime scheduleDate;
 
     public Long getId() {
         return id;
@@ -87,19 +88,19 @@ public class FinancialTransfer {
         this.totalAmount = totalAmount;
     }
 
-    public Date getTransferDate() {
+    public LocalDateTime getTransferDate() {
         return transferDate;
     }
 
-    public void setTransferDate(Date transferDate) {
+    public void setTransferDate(LocalDateTime transferDate) {
         this.transferDate = transferDate;
     }
 
-    public Date getScheduleDate() {
+    public LocalDateTime getScheduleDate() {
         return scheduleDate;
     }
 
-    public void setScheduleDate(Date scheduleDate) {
+    public void setScheduleDate(LocalDateTime scheduleDate) {
         this.scheduleDate = scheduleDate;
     }
 
