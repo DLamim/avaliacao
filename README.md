@@ -1,64 +1,64 @@
-# Instruções
-Fazer um fork desse projeto e commitar o seu desenvolvimento
+#API de Transferência Financeira
+Este projeto é uma API RESTful que permite aos usuários fazer transferências financeiras e calcula a taxa com base no tipo de transferência e no número de dias entre a data da transferência e a data programada.
 
+##Tecnologias Utilizadas
+Java: 18
+Spring Boot: 3.0.5
+Spring Boot Data JPA: 3.0.5
+Spring Boot Web: 3.0.5
+H2 Database
+Spring Boot Test: 3.0.5
+Maven 4
+JUnit 5
+Mockito
 
-# Entregáveis
- Pequena documentação no README explicando suas decisões arquiteturais, versões de linguagem,
-ferramentas utilizadas e instruções para a subida do projeto.
+##Getting Started
+Para começar com o projeto, clone o repositório e execute o seguinte comando:
 
- É obrigatório a criação de um projeto no seu Github para que vejamos os passos feitos
-através dos commits.
+mvn spring-boot:run
 
-# Avaliação
+Isso iniciará o servidor em http://localhost:8080.
 
-O objetivo dessa tarefa é avaliar como você vai desenvolver o código em termos de estilo,
-eficiência, qualidade e prazo de entrega.
+##Endpoints
+A API possui os seguintes endpoints:
 
-A tarefa é a seguinte:
+POST /financial-transfers: cria uma nova transferência financeira
+GET /financial-transfers/{ID}: recupera uma transferência financeira de acordo com o ID
+GET /financial-transfers: recupera uma lista de todas as transferências financeiras
 
-Desenvolver um sistema de agendamento de transferências financeiras.
+##Estratégias
+O projeto utiliza as seguintes estratégias:
 
-1) O usuário deve poder agendar uma transferência financeira com as seguintes
- informações:
- Conta de origem (padrão XXXXXX)
- Conta de destino (padrão XXXXXX)
- Valor da transferência
- Taxa (a ser calculada)
- Data da transferência (data que será realizada a transferência)
- Data de agendamento (hoje)
- 
-2) Cada tipo de transação segue uma regra diferente para cálculo da taxa
+Programação orientada a objetos: o código está organizado em classes e segue os princípios da programação orientada a objetos.
+Injeção de dependência: o projeto usa a injeção de dependência do Spring Boot para gerenciar o ciclo de vida dos objetos.
+Tratamento de exceção: o projeto usa classes de exceção personalizadas para lidar com erros e retornar mensagens de erro apropriadas ao cliente.
+Teste de unidade: o projeto usa JUnit e Mockito para teste de unidade para garantir que o código esteja funcionando conforme o esperado.
+RESTful API: o projeto segue os princípios do design de API RESTful, incluindo o uso de verbos HTTP e endpoints de recursos.
 
- A: Tranferências no mesmo dia do agendamento tem uma taxa de $3 mais 3% do valor a
-ser transferido;
+##Design Patterns
+O projeto utilizou os seguintes padrões:
 
-B: Tranferências até 10 dias da data de agendamento possuem uma taxa de $12.
+Model-View-Controller (MVC) Pattern
+Repository Pattern
+Dependency Injection Pattern
+DTO Pattern
+Exception Handling Pattern
 
-C: Operações do tipo C tem uma taxa regressiva conforme a data de
-transferência:
+##Contribuidor/Desenvolvedor
+Dionisio Lamim Moraes
 
- acima de 10 dias da data de agendamento 8.2%
- 
- acima de 20 dias da data de agendamento 6.9%
- 
- acima de 30 dias da data de agendamento 4.7%
- 
- acima de 40 dias da data de agendamento 1.7%
- 
- D: Operações do tipo D tem a taxa igual a A, B ou C dependendo do valor da
-transferência.
+##Informações adicionais:
 
- Valores até $1.000 seguem a taxação tipo A
- 
- Valores de $1.001 até $2.000 seguem a taxação tipo B
- 
- Valores maiores que $2.000 seguem a taxação tipo C
- 
-Obs: Caso não haja taxa aplicável, lançar um alerta sobre o erro.
+As contas bancárias são criadas automaticamente com build do projeto.
 
-3) O usuário deve poder ver todos os agendamentos cadastrados.
+Para postar uma nova transferência financeira, use o endpoint e o body abaixo:
 
-Nota: A persistência deve ser feita em banco de dados em memória (h2, por exemplo).
-Boa sorte!
-
-
+http://localhost:8080/api/financialTransfer
+{
+  "senderAccount": "123123",
+  "beneficiaryAccount": "456456",
+  "amount": 2001.00,
+  "type": "c",
+  "transferDate": "2023-04-18T08:30:00Z",
+  "scheduleDate": "2023-05-19T14:00:00Z"
+}
